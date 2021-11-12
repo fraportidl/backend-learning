@@ -1,0 +1,12 @@
+{
+    "type": "mssql",
+    "host": "localhost",
+    "port": 1433,
+    "username": "sa",
+    "password": "operationBlue310",
+    "database": "integracao",
+    "autoLoadEntities": true,
+    "synchronize": true,
+    "options": { "encrypt": false }
+}
+  
