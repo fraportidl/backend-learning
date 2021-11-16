@@ -9,10 +9,10 @@ export class CreateUsers1636748198392 implements MigrationInterface {
                 columns:[
                     {
                         name: 'id',
-                        type: 'uuid',
+                        type: 'int',
                         isPrimary: true,
                         isGenerated: true,
-                        //generationStrategy: 'increment'
+                        generationStrategy: 'increment'
                     },
                     {
                         name: 'name',
@@ -29,13 +29,13 @@ export class CreateUsers1636748198392 implements MigrationInterface {
                     },
                     {
                         name: 'created_at',
-                        type: 'timestamp',
-                        default: 'now()'
+                        type: 'datetimeoffset',
+                        default: 'SYSDATETIMEOFFSET()'
                     },
                     {
                         name: 'updated_at',
-                        type: 'timestamp',
-                        default: 'now()'
+                        type: 'datetimeoffset',
+                        default: 'SYSDATETIMEOFFSET()'
                     }
                 ]
             })
