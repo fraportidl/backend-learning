@@ -5,11 +5,11 @@ export function ensureAdmin(request: Request, response: Response, next: NextFunc
     
     const admin = true;
 
-    if(!admin){
+    if(admin){
+        return next();
+    }
         return response.status(401).json({
             error: "Usuario sem autorizaçao de acesso",
-    }) 
-       return next();
-    };
+    });
   
 }
