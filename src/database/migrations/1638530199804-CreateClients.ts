@@ -14,12 +14,12 @@ export class CreateClients1638530199804 implements MigrationInterface {
                     generationStrategy: 'increment'
                 },
                 {
-                    name: 'razao_social',
+                    name: 'nome_fantasia',
                     type: 'varchar'
                 },
                 {
-                    name: 'nome_fantasia',
-                    type: 'varchar'
+                    name: 'razao_social',
+                    type: 'varchar' 
                 },
                 {
                     name: 'responsavel',

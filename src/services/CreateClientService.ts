@@ -6,8 +6,8 @@ interface IClientRequest {
     razao_social: string;
     nome_fantasia: string;
     type_client: string;
-    responsavel?: string;
     nunber_register: string;
+    responsavel?: string;
     adiantamento_default?: number;
   
 };
@@ -23,15 +23,21 @@ class CreateClientService {
                 }
         
                 const clientExist = await clientRepositories.findOne({
-                    nunber_register,
-                    nome_fantasia
+                    nunber_register
                 });
         
-                if (clientExist.nunber_register) {
-                    throw new Error(`O Cliente ${nome_fantasia} já existe`);
+                if (clientExist) {
+                    throw new Error(`O Cliente  já existe`);
                 }
         
                 const client = clientRepositories.create({
+                    id,
+                    razao_social,
+                    nome_fantasia,
+                    type_client,
+                    nunber_register,
+                    responsavel,
+                    adiantamento_default
                     
                 });
         

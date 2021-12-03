@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import express, { Request, Response ,NextFunction } from "express";
 import "express-async-errors";
-import { router } from "./routes";
+import { router } from "../routes";
 
 import "./database";
 
