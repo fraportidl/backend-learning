@@ -27,14 +27,14 @@ class CreateUserService {
             throw new Error("Usuario já existe");
         }
 
-        const passwordHas = await hash(password, 8);
+        const passwordHash = await hash(password, 8);
 
         const user = usersRepository.create({
             id,
             name,
             email,
             admin,
-            password: passwordHas,
+            password: passwordHash,
         });
 
         await usersRepository.save(user);
