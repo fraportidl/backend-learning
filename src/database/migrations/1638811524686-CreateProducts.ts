@@ -1,11 +1,10 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class CreateClients1638530199804 implements MigrationInterface {
+export class CreateProducts1638811524686 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.createTable(
-            new Table({
-                name: "clients",
+        await queryRunner.createTable( new Table({
+                name: "products",
                 columns:[
                     {
                         name: 'id',
@@ -15,28 +14,20 @@ export class CreateClients1638530199804 implements MigrationInterface {
                         generationStrategy: 'increment'
                     },
                     {
-                        name: 'nome_fantasia',
+                        name: 'description',
                         type: 'varchar'
                     },
                     {
-                        name: 'razao_social',
-                        type: 'varchar' 
-                    },
-                    {
-                        name: 'responsavel',
-                        type: 'varchar'
-                    },
-                    {
-                        name: 'nunber_register',
-                        type: 'varchar'
-                    },
-                    {
-                        name: 'type_client',
-                        type: 'varchar'
-                    },
-                    {
-                        name: 'adiantamento_default',
+                        name: 'price',
                         type: 'float'
+                    },
+                    {
+                        name: 'storage_quantity',
+                        type: 'numeric'
+                    },
+                    {
+                        name: 'product_type',
+                        type: 'int'
                     },
                     {
                         name: 'created_at',
@@ -54,7 +45,7 @@ export class CreateClients1638530199804 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("clients")
+        await queryRunner.dropTable("products")
     }
 
 }

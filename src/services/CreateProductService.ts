@@ -17,7 +17,7 @@ class CreateProductService {
                     storage_quantity, product_type }: IProductRequest) {
         const productRepositories = getCustomRepository(ProductRepositories);
         
-                if(!description || price || product_type) {
+                if(!description || !price || !product_type) {
                     throw new Error("Existem dados obrigatorios nao informados, revise o cadastro");
                 }
 
