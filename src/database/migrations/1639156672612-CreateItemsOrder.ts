@@ -59,7 +59,7 @@ export class CreateItemsOrder1639156672612 implements MigrationInterface {
                     },
                     {
                         name: 'FKOrder',
-                        referencedTableName: 'order',
+                        referencedTableName: 'orders',
                         referencedColumnNames: ['id'],
                         columnNames: ['id_order'],
                         onDelete: 'SET NULL',

@@ -1,7 +1,7 @@
 import {Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn} from "typeorm";
 
 
-@Entity("order") 
+@Entity("orders") 
 class Order {
 
     @PrimaryGeneratedColumn()
