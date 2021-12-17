@@ -7,6 +7,7 @@ interface IProductRequest {
     price: string;
     storage_quantity: number;
     product_type: string;
+    unitary_price: number;
 
   
 };
@@ -14,10 +15,10 @@ interface IProductRequest {
 
 class CreateProductService {
     async execute({ id, description, price, 
-                    storage_quantity, product_type }: IProductRequest) {
+                    storage_quantity, product_type, unitary_price }: IProductRequest) {
         const productRepositories = getCustomRepository(ProductRepositories);
         
-                if(!description || !price || !product_type) {
+                if(!description || !unitary_price || !product_type) {
                     throw new Error("Existem dados obrigatorios nao informados, revise o cadastro");
                 }
 
@@ -27,7 +28,8 @@ class CreateProductService {
                     description,
                     price,
                     storage_quantity,
-                    product_type
+                    product_type,
+                    unitary_price
                     
                 });
         

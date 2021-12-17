@@ -19,6 +19,9 @@ class Products {
     @Column()
     product_type: string;
 
+    @Column()
+    unitary_price: number;
+
     @CreateDateColumn()
     created_at: Date;
 

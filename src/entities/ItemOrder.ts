@@ -1,4 +1,6 @@
-import {Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn} from "typeorm";
+import {Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn, JoinColumn, ManyToOne} from "typeorm";
+import { Order } from "./Order";
+import { Products } from "./Products";
 
 
 @Entity("itemsOrder") 
@@ -10,14 +12,25 @@ class ItemsOrder {
     @Column()
     id_product: string;
 
+    @JoinColumn({name: "id_product"})
+    @ManyToOne(() => Products)
+    product: Products;
+
     @Column()
     id_order: string;
+
+    @JoinColumn({name: "id_order"})
+    order: Order;
+    @ManyToOne(() => Order)
 
     @Column()
     quantity: number;
 
     @Column()
     price: string;
+
+    @Column()
+    unitary_price: number;
 
     @Column()
     descount: string;
