@@ -5,19 +5,19 @@ import {Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, Prima
 class Order {
 
     @PrimaryGeneratedColumn()
-    id: string;
+    id: number;
 
     @Column()
-    id_client: string;
+    id_client: number;
 
     @Column()
     order_number: number;
 
     @Column()
-    id_product: string;
+    id_product: number;
 
     @Column()
-    valor_total: string;
+    valor_total: number;
 
     @Column()
     status: string;
