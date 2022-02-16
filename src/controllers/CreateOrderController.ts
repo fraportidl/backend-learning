@@ -9,9 +9,9 @@ class CreateOrderContoller {
     
         const createOrderService = new CreateOrderService();
     
-        const Oder = await createOrderService.execute({ ...id_product });
+        const order = await createOrderService.execute({ ...id_product });
 
-        return response.json(Oder);
+        return response.json(order);
     }
 }
 

@@ -19,15 +19,17 @@ class CreateClientService {
         const clientRepositories = getCustomRepository(ClientRepositories);
         
                 if(!nunber_register) {
-                    throw new Error("O CPF ou CNPJ é um campo obrigatorio'");
+                    throw new Error("O CPF ou CNPJ é um campo obrigatorio");
                 }
         
+
                 const clientExist = await clientRepositories.findOne({
-                    nunber_register
+                    nunber_register,
+                    nome_fantasia
                 });
         
                 if (clientExist) {
-                    throw new Error(`O Cliente  já existe`);
+                    throw new Error(`O Cliente ${nome_fantasia} já existe`);
                 }
         
                 const client = clientRepositories.create({
