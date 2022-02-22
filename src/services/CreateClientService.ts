@@ -24,12 +24,12 @@ class CreateClientService {
         
 
                 const clientExist = await clientRepositories.findOne({
-                    nunber_register,
-                    nome_fantasia
+                    nunber_register
                 });
         
+
                 if (clientExist) {
-                    throw new Error(`O Cliente ${nome_fantasia} já existe`);
+                    throw new Error(`O Cliente já existe`);
                 }
         
                 const client = clientRepositories.create({

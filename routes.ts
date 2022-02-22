@@ -10,6 +10,8 @@ import { AuthenticateUserController } from "./src/controllers/AuthenticateUserCo
 import { CreateItemOrderContoller } from "./src/controllers/CreateItemOrderController";
 import { CreateProductContoller } from "./src/controllers/CreateProductController";
 import { CreateOrderContoller } from "./src/controllers/CreateOrderController";
+import { FindUsersContoller } from "./src/controllers/FindUsersController";
+
 
 const router = Router();
 const createUserContoller = new CreateUserContoller();
@@ -21,6 +23,7 @@ const authenticateUserController = new AuthenticateUserController();
 const createItemOrderContoller = new CreateItemOrderContoller();
 const createProductContoller = new CreateProductContoller();
 const createOrderContoller = new CreateOrderContoller();
+const findUsersController = new FindUsersContoller();
 
 router.use(ensureAdmin);
 
@@ -41,7 +44,8 @@ router.post("/employees", createEmployeeContoller.handle);
 router.post("/products", createProductContoller.handle);
 //Orders
 router.post("/orders", createOrderContoller.handle);
-
+//Users
+router.get("/users", findUsersController.handle);
 
 
 //Rotas para excluir
