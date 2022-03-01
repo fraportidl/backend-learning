@@ -23,15 +23,13 @@ const authenticateUserController = new AuthenticateUserController();
 const createItemOrderContoller = new CreateItemOrderContoller();
 const createProductContoller = new CreateProductContoller();
 const createOrderContoller = new CreateOrderContoller();
-const findUsersController = new FindUsersContoller();
+const findUsersContoller = new FindUsersContoller();
 
 router.use(ensureAdmin);
 
 //Authenticate
 router.post("/login", authenticateUserController.handle);
 
-//Users
-router.post("/users", createUserContoller.handle);
 //Tags
 router.post("/tags", ensureAdmin, createTagContoller.handle);
 //Clients
@@ -45,7 +43,8 @@ router.post("/products", createProductContoller.handle);
 //Orders
 router.post("/orders", createOrderContoller.handle);
 //Users
-router.get("/users", findUsersController.handle);
+router.post("/users", createUserContoller.handle);
+router.get("/users", findUsersContoller.handle);
 
 
 //Rotas para excluir
