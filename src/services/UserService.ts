@@ -1,5 +1,5 @@
-import { getCustomRepository } from "typeorm";
-import { UsersRepositories } from "../repositories/UserRepositories";
+import { getCustomRepository, getRepository } from "typeorm";
+import { User } from "../entities/User";
 import { hash } from "bcryptjs";
 
 interface IUserRequest {
@@ -11,9 +11,9 @@ interface IUserRequest {
 };
 
 
-class CreateUserService {
+class UserService {
     async execute({ id, name, email, admin, password }: IUserRequest) {
-        const usersRepository = getCustomRepository(UsersRepositories);
+        const usersRepository = getRepository(User)
 
         if(!email) {
             throw new Error("Email incorreto");
@@ -39,11 +39,11 @@ class CreateUserService {
 
         await usersRepository.save(user);
 
-        return user;
+        return;
     }
 }
 
 
 
 
-export { CreateUserService };
+export { UserService };

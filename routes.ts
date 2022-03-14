@@ -1,8 +1,8 @@
 import { Router } from "express"
 
-import { CreateUserContoller } from "./src/controllers/CreateUserController";
+import { UserContoller } from "./src/controllers/UserController";
 import { CreateTagContoller } from "./src/controllers/CreateTagController";
-import { CreateClientContoller } from "./src/controllers/CreateClientController";
+import { ClientController } from "./src/controllers/ClientController";
 import { ensureAdmin } from "./src/middlewares/ensureAdmin";
 import { CreateVehicleContoller } from "./src/controllers/CreateVehicleController";
 import { CreateEmployeeContoller } from "./src/controllers/CreateEmployeeController";
@@ -10,20 +10,19 @@ import { AuthenticateUserController } from "./src/controllers/AuthenticateUserCo
 import { CreateItemOrderContoller } from "./src/controllers/CreateItemOrderController";
 import { CreateProductContoller } from "./src/controllers/CreateProductController";
 import { CreateOrderContoller } from "./src/controllers/CreateOrderController";
-import { FindUsersContoller } from "./src/controllers/FindUsersController";
+import { Client } from "./src/entities/Client";
 
 
 const router = Router();
-const createUserContoller = new CreateUserContoller();
+//const userContoller = new UserContoller();
 const createTagContoller = new CreateTagContoller();
-const createClientContoller = new CreateClientContoller();
+const clientController = new ClientController();
 const createVehicleContoller = new CreateVehicleContoller();
 const createEmployeeContoller = new CreateEmployeeContoller();
 const authenticateUserController = new AuthenticateUserController();
 const createItemOrderContoller = new CreateItemOrderContoller();
 const createProductContoller = new CreateProductContoller();
 const createOrderContoller = new CreateOrderContoller();
-const findUsersContoller = new FindUsersContoller();
 
 router.use(ensureAdmin);
 
@@ -33,7 +32,8 @@ router.post("/login", authenticateUserController.handle);
 //Tags
 router.post("/tags", ensureAdmin, createTagContoller.handle);
 //Clients
-router.post("/clients", createClientContoller.handle);
+router.post("/clients", ClientController.handle);
+router.get("/clientsAll", ClientController.findClients);
 //Vehicles
 router.post("/vehicles", createVehicleContoller.handle);
 //Employees
@@ -43,8 +43,9 @@ router.post("/products", createProductContoller.handle);
 //Orders
 router.post("/orders", createOrderContoller.handle);
 //Users
-router.post("/users", createUserContoller.handle);
-router.get("/users", findUsersContoller.handle);
+router.post("/users", UserContoller.handleInsert);
+router.get("/users", UserContoller.findUser);
+router.get("/usersAll", UserContoller.findAllUsers);
 
 
 //Rotas para excluir
